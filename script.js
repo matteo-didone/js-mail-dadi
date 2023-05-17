@@ -14,11 +14,21 @@ function generateRandomNumber()
 const userNumber = generateRandomNumber();
 const computerNumber = generateRandomNumber();
 
-//Create a p to add the results to the DOM
-let userScoreP = document.getElementById('userScore');
-let computerScoreP = document.getElementById('computerScore'); 
-let scoreComparisonP = document.getElementById('scoreComparison');
+// Create the <p> elements for user score, computer score, and score comparison
+const userScoreP = document.createElement('p');
+userScoreP.id = 'user-score';
+const computerScoreP = document.createElement('p');
+computerScoreP.id = 'computer-score';
+const scoreComparisonP = document.createElement('p');
+scoreComparisonP.id = 'score-comparison';
 
+// Get the score-container div
+const scoreContainer = document.querySelector('.score-container');
+
+// Append the <p> elements to the container
+scoreContainer.appendChild(userScoreP);
+scoreContainer.appendChild(computerScoreP);
+scoreContainer.appendChild(scoreComparisonP);
 
 //Compare the 2 numbers
 function compareNumbers(userNumber, computerNumber) 
@@ -28,27 +38,27 @@ function compareNumbers(userNumber, computerNumber)
     console.log("Computer number: " + computerNumber);
 
     //Display the 2 numbers in the DOM
-    userScoreP.append("User number: " + userNumber);
-    computerScoreP.append("Computer number: " + computerNumber);
+    userScoreP.innerHTML = "User number: " + userNumber;
+    computerScoreP.innerHTML = "Computer number: " + computerNumber;
 
     if(userNumber > computerNumber) 
     {
         const userScore = "You win!";
         console.log(userScore);
-        scoreComparisonP.append(userScore);
+        scoreComparisonP.innerHTML = userScore;
     }
 
     else if(userNumber < computerNumber) 
     {
         const computerScore = "You lose!";
         console.log(computerScore);
-        scoreComparisonP.append(computerScore);
+        scoreComparisonP.innerHTML = computerScore;
     }
     else if (userNumber === computerNumber)
     {
         const tieScore = "It's a tie!";
         console.log(tieScore);
-        scoreComparisonP.append(tieScore);
+        scoreComparisonP.innerHTML = tieScore;
     }
 }
 
