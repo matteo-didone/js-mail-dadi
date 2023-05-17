@@ -64,3 +64,55 @@ function compareNumbers(userNumber, computerNumber)
 
 //Display the results
 compareNumbers(userNumber, computerNumber);
+
+//Then, I need to ask the user for their email, check if the email address is on the list of those who can access, and print a message appropriate on the result of the check
+const userEmail = prompt("Please enter your email address: ");
+var emailFound = false;
+
+//Create an array of email addresses
+const emailAddresses = 
+[
+    "matteo.dido9@gmail.com",
+    "riccardo.petricca@gmail.com",
+    "stefano.cappellini@gmail.com",
+    "antonio.sagoleo@gmail.com",
+    "elisabetta.daho@gmail.com",
+];
+
+// Create the <p> elements for user score, computer score, and score comparison
+const userEmailP = document.createElement('p');
+userEmailP.id = 'user-email';
+const accessP = document.createElement('p');
+accessP.id = 'access-paragraph';
+
+// Get the score-container div
+const emailAddressesContainer = document.querySelector('.email-addresses-container');
+
+// Append the <p> elements to the container
+emailAddressesContainer.appendChild(userEmailP);
+emailAddressesContainer.appendChild(accessP);
+
+//Display the user's email address in the document
+userEmailP.innerHTML = "User email: " + userEmail;
+
+
+//Check if the email address is on the list of those who can access
+//To do so, I'll iterate through the array 
+for(var i = 0; i < emailAddresses.length; i++)
+{
+    if(emailAddresses[i] === userEmail)
+    {
+        emailFound = true;
+        const accessGranted = "Access granted!";
+        console.log(accessGranted); 
+        accessP.innerHTML = accessGranted;
+        break;
+    }
+}
+
+if(emailFound === false)
+{
+    const accessDenied = "Access denied!";
+    console.log(accessDenied);
+    accessP.innerHTML = accessDenied;
+}
