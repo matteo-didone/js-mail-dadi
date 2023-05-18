@@ -96,21 +96,23 @@ emailAddressesContainer.appendChild(accessP);
 userEmailP.innerHTML = "User email: " + userEmail;
 
 
-//Check if the email address is on the list of those who can access
-//To do so, I'll iterate through the array 
-for(var i = 0; i < emailAddresses.length; i++)
+// Check if the email address is on the list of those who can access
+for (let i = 0; i < emailAddresses.length && !emailFound; i++) 
 {
-    if(emailAddresses[i] === userEmail)
+    if (emailAddresses[i] === userEmail) 
     {
         emailFound = true;
-        const accessGranted = "Access granted!";
-        console.log(accessGranted); 
-        accessP.innerHTML = accessGranted;
-        break;
     }
 }
 
-if(emailFound === false)
+// Determine the access status and display appropriate message
+if (emailFound) 
+{
+    const accessGranted = "Access granted!";
+    console.log(accessGranted);
+    accessP.innerHTML = accessGranted;
+} 
+else 
 {
     const accessDenied = "Access denied!";
     console.log(accessDenied);
