@@ -97,7 +97,7 @@ userEmailP.innerHTML = "User email: " + userEmail;
 
 
 // Check if the email address is on the list of those who can access
-for (let i = 0; i < emailAddresses.length && !emailFound; i++) 
+for (let i = 0; i < (emailAddresses.length-1) && !emailFound; i++) 
 {
     if (emailAddresses[i] === userEmail) 
     {
