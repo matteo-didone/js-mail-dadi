@@ -106,13 +106,13 @@ for (let i = 0; i < emailAddresses.length && !emailFound; i++)
 }
 
 // Determine the access status and display appropriate message
-if (emailFound) 
+if (emailFound === true) 
 {
     const accessGranted = "Access granted!";
     console.log(accessGranted);
     accessP.innerHTML = accessGranted;
 } 
-else 
+else if (emailFound === false)
 {
     const accessDenied = "Access denied!";
     console.log(accessDenied);
